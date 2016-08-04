@@ -14,6 +14,8 @@
 		C8FEC6511D53708000525A0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8FEC64F1D53708000525A0C /* LaunchScreen.storyboard */; };
 		C8FEC65C1D53708000525A0C /* ChatDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC65B1D53708000525A0C /* ChatDemoTests.swift */; };
 		C8FEC6671D53708000525A0C /* ChatDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC6661D53708000525A0C /* ChatDemoUITests.swift */; };
+		C8FEC6751D537C0C00525A0C /* Contacts.xml in Resources */ = {isa = PBXBuildFile; fileRef = C8FEC6741D537C0C00525A0C /* Contacts.xml */; };
+		C8FEC6771D5393FE00525A0C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC6761D5393FE00525A0C /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C8FEC6621D53708000525A0C /* ChatDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8FEC6661D53708000525A0C /* ChatDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDemoUITests.swift; sourceTree = "<group>"; };
 		C8FEC6681D53708000525A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8FEC6741D537C0C00525A0C /* Contacts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Contacts.xml; sourceTree = "<group>"; };
+		C8FEC6761D5393FE00525A0C /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 			children = (
 				C8FEC6461D53708000525A0C /* AppDelegate.swift */,
 				C8FEC6481D53708000525A0C /* ViewController.swift */,
+				C8FEC6761D5393FE00525A0C /* ChatView.swift */,
 				C8FEC64A1D53708000525A0C /* Main.storyboard */,
 				C8FEC64D1D53708000525A0C /* Assets.xcassets */,
 				C8FEC64F1D53708000525A0C /* LaunchScreen.storyboard */,
 				C8FEC6521D53708000525A0C /* Info.plist */,
+				C8FEC6741D537C0C00525A0C /* Contacts.xml */,
 			);
 			path = ChatDemo;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 			files = (
 				C8FEC6511D53708000525A0C /* LaunchScreen.storyboard in Resources */,
 				C8FEC64E1D53708000525A0C /* Assets.xcassets in Resources */,
+				C8FEC6751D537C0C00525A0C /* Contacts.xml in Resources */,
 				C8FEC64C1D53708000525A0C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8FEC6491D53708000525A0C /* ViewController.swift in Sources */,
+				C8FEC6771D5393FE00525A0C /* ChatView.swift in Sources */,
 				C8FEC6471D53708000525A0C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
