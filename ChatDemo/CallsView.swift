@@ -1,14 +1,14 @@
 //
-//  ChatView.swift
+//  CallsView.swift
 //  ChatDemo
 //
-//  Created by SHUVO on 8/4/16.
+//  Created by SHUVO on 8/8/16.
 //  Copyright © 2016 SHUVO. All rights reserved.
 //
 
 import UIKit
 
-class ChatView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class CallsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
     struct Item {
         let name: String
@@ -19,6 +19,8 @@ class ChatView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UIT
     var itemUrl: String?
     var items: [Item]!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var descriptLbl: UILabel!
+    @IBOutlet weak var headerLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +78,7 @@ class ChatView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellView
-        myCell.headerLbl.text = items[indexPath.row].name;
+        myCell.headerLbl.text = items[indexPath.row].name
 //        myCell.textLabel?.text = items[indexPath.row].name;
 //        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
         
@@ -88,7 +90,6 @@ class ChatView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UIT
 //        self.performSegueWithIdentifier("segue", sender: self)
 //    }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,4 +97,3 @@ class ChatView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UIT
     
     
 }
-

@@ -1,14 +1,14 @@
 //
-//  ChatView.swift
+//  VideoView.swift
 //  ChatDemo
 //
-//  Created by SHUVO on 8/4/16.
+//  Created by SHUVO on 8/8/16.
 //  Copyright © 2016 SHUVO. All rights reserved.
 //
 
 import UIKit
 
-class ChatView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class VideoView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
     struct Item {
         let name: String
