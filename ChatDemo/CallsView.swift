@@ -79,16 +79,9 @@ class CallsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UI
     {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellView
         myCell.headerLbl.text = items[indexPath.row].name
-//        myCell.textLabel?.text = items[indexPath.row].name;
-//        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
         
         return myCell;
     }
-    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        self.performSegueWithIdentifier("segue", sender: self)
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

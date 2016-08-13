@@ -8,7 +8,7 @@
 
 import UIKit
 import Contacts
-import ContactsUI
+//import ContactsUI
 
 class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
