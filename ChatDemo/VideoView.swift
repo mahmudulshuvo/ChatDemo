@@ -19,9 +19,12 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
     var itemUrl: String?
     var items: [Item]!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var topLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupConstraints()
         var parser: XMLParser?
         let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
         if path != nil
@@ -43,6 +46,33 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
         
         
     }
+    
+    
+    func setupConstraints() {
+        
+        self.containerView.translatesAutoresizingMaskIntoConstraints = false
+        let topAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:0)
+        let bottomAnchorContainerView = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:0)
+        let leadingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
+        let trailingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
+        NSLayoutConstraint.activate([topAnchorContainerView , bottomAnchorContainerView ,leadingAnchorContainerView , trailingAnchorContainerView])
+        
+        self.topLabel.translatesAutoresizingMaskIntoConstraints = false
+        let centerX = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant:0)
+        let centerY = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant:0)
+        NSLayoutConstraint.activate([centerX , centerY])
+        
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        let topAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-60)
+        let bottomAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:60)
+        let leadingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
+        let trailingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
+        NSLayoutConstraint.activate([topAnchorTableView , bottomAnchorTableView ,leadingAnchorTableView , trailingAnchorTableView])
+        
+        
+    }
+    
     
     func parserDidStartDocument(_ parser: XMLParser) {
         items = []

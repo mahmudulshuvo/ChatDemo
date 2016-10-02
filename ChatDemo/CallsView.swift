@@ -71,11 +71,6 @@ class CallsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
         NSLayoutConstraint.activate([topAnchorTableView , bottomAnchorTableView ,leadingAnchorTableView , trailingAnchorTableView])
         
         
-        
-//        let width = NSLayoutConstraint(item: self.plusBtn, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:45)
-//        let height = NSLayoutConstraint(item: self.plusBtn, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:50)
-        
-        
     }
     
     func parserDidStartDocument(_ parser: XMLParser) {
