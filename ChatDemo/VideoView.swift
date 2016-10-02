@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
     struct Item {
         let name: String
@@ -22,11 +22,11 @@ class VideoView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var parser: NSXMLParser?
-        let path = NSBundle.mainBundle().pathForResource("Contacts", ofType: "xml")
+        var parser: XMLParser?
+        let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
         if path != nil
         {
-            parser = NSXMLParser(contentsOfURL: NSURL(fileURLWithPath: path!))
+            parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))
             parser?.delegate = self
             parser?.parse()
             if parser != nil
@@ -44,22 +44,22 @@ class VideoView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UI
         
     }
     
-    func parserDidStartDocument(parser: NSXMLParser) {
+    func parserDidStartDocument(_ parser: XMLParser) {
         items = []
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if elementName == "item" {
             itemUrl = attributeDict["imgUrl"]
             itemName = ""
         }
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
-        itemName?.appendContentsOf(string)
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        itemName?.append(string)
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             items.append(Item(name: itemName!, url: itemUrl!))
             itemName = nil
@@ -68,15 +68,15 @@ class VideoView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UI
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return items.count;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellView
-        myCell.headerLbl.text = items[indexPath.row].name;
+        let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
+        myCell.headerLbl.text = items[(indexPath as NSIndexPath).row].name;
 //        myCell.textLabel?.text = items[indexPath.row].name;
 //        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
         

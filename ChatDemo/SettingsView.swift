@@ -21,44 +21,44 @@ class SettingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.items[section].count;
     }
     
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return self.section[section]
         
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
 
         return self.section.count
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if (indexPath.section == 0) {
+        if ((indexPath as NSIndexPath).section == 0) {
             return 70.0
         }
         return 44.0;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellView
+        let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
         
-        if (indexPath.section == 0) {
+        if ((indexPath as NSIndexPath).section == 0) {
             myCell.imgView.image = UIImage(named: "images")
         }
         
         else {
             myCell.imgView.image = UIImage(named: "Settings")
         }
-        myCell.headerLbl.text = self.items[indexPath.section][indexPath.row]
+        myCell.headerLbl.text = self.items[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         
         return myCell;
     }

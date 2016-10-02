@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 //import ContactsUI
 
-class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
     struct Item {
         let name: String
@@ -27,11 +27,11 @@ class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var parser: NSXMLParser?
-        let path = NSBundle.mainBundle().pathForResource("Contacts", ofType: "xml")
+        var parser: XMLParser?
+        let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
         if path != nil
         {
-            parser = NSXMLParser(contentsOfURL: NSURL(fileURLWithPath: path!))
+            parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))
             parser?.delegate = self
             parser?.parse()
             if parser != nil
@@ -39,7 +39,7 @@ class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  
                 print(items)
                 tableView.dataSource = self
                 tableView.delegate = self
-                getContacts()
+            //    getContacts()
             }
         }
         else
@@ -50,22 +50,22 @@ class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  
         
     }
     
-    func parserDidStartDocument(parser: NSXMLParser) {
+    func parserDidStartDocument(_ parser: XMLParser) {
         items = []
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         if elementName == "item" {
             itemUrl = attributeDict["imgUrl"]
             itemName = ""
         }
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
-        itemName?.appendContentsOf(string)
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        itemName?.append(string)
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             items.append(Item(name: itemName!, url: itemUrl!))
             itemName = nil
@@ -75,43 +75,43 @@ class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  
     
     // For fetching Contacts
     
-    func getContacts() {
-        let store = CNContactStore()
-        
-        if CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined {
-            store.requestAccessForEntityType(.Contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
-                if authorized {
-                    self.retrieveContactsWithStore(store)
-                }
-            })
-        } else if CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized {
-            self.retrieveContactsWithStore(store)
-        }
-    }
+//    func getContacts() {
+//        let store = CNContactStore()
+//        
+//        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
+//            store.requestAccess(for: .contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
+//                if authorized {
+//                    self.retrieveContactsWithStore(store)
+//                }
+//            })
+//        } else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+//            self.retrieveContactsWithStore(store)
+//        }
+//    }
     
-    func retrieveContactsWithStore(store: CNContactStore) {
+    func retrieveContactsWithStore(_ store: CNContactStore) {
         
         let keysToFetch = [
-            CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
+            CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
             CNContactEmailAddressesKey,
             CNContactPhoneNumbersKey,
             CNContactImageDataAvailableKey,
-            CNContactThumbnailImageDataKey]
+            CNContactThumbnailImageDataKey] as [Any]
         
         // Get all the containers
         var allContainers: [CNContainer] = []
         do {
-            allContainers = try store.containersMatchingPredicate(nil)
+            allContainers = try store.containers(matching: nil)
         } catch {
             print("Error fetching containers")
         }
         
         for container in allContainers {
-            let fetchPredicate = CNContact.predicateForContactsInContainerWithIdentifier(container.identifier)
+            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
             
             do {
-                let containerResults = try store.unifiedContactsMatchingPredicate(fetchPredicate, keysToFetch: keysToFetch)
-                objects.appendContentsOf(containerResults)
+                let containerResults = try store.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
+                objects.append(contentsOf: containerResults)
             } catch {
                 print("Error fetching results for container")
             }
@@ -120,21 +120,21 @@ class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return objects.count;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CellView
+        let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
         
-        let contact = self.objects[indexPath.row]
+        let contact = self.objects[(indexPath as NSIndexPath).row]
         let formatter = CNContactFormatter()
         
        // myCell.headerLbl.text = items[indexPath.row].name;
         
-        myCell.headerLbl.text = formatter.stringFromContact(contact)
+        myCell.headerLbl.text = formatter.string(from: contact)
         if isExist(myCell.headerLbl.text!) {
             myCell.descriptLbl.text = "Chat Demo Client"
         }
@@ -145,7 +145,7 @@ class ContactsView: UIViewController, NSXMLParserDelegate, UITableViewDelegate  
         return myCell;
     }
     
-    func isExist(name: String) -> Bool {
+    func isExist(_ name: String) -> Bool {
         
         for item in items {
             if (name == item.name) {
