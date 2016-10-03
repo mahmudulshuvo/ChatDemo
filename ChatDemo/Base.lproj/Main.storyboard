@@ -9,7 +9,7 @@
         <!--Video-->
         <scene sceneID="Pvc-GD-LqH">
             <objects>
-                <viewController id="InC-jV-cvb" customClass="VideoView" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="InC-jV-cvb" customClass="VideoVC" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fwo-dQ-dqU"/>
                         <viewControllerLayoutGuide type="bottom" id="70P-5a-z3c"/>
@@ -85,7 +85,7 @@
         <!--Contacts-->
         <scene sceneID="Cjf-Xb-9fU">
             <objects>
-                <viewController id="llW-tm-b80" customClass="ContactsView" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="llW-tm-b80" customClass="ContactsVC" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xid-5L-Izn"/>
                         <viewControllerLayoutGuide type="bottom" id="5q9-yZ-vsR"/>
@@ -134,7 +134,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu8-8Q-OFd">
                                                     <frame key="frameInset" minX="83" width="200" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.52610709286323454" blue="0.92535749636714681" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -142,7 +141,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCn-lp-NKn">
                                                     <frame key="frameInset" minX="83" minY="22" width="200" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.253106264375352" green="0.47444465595694152" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -150,7 +148,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images.png" translatesAutoresizingMaskIntoConstraints="NO" id="gF2-TR-o2q">
                                                     <frame key="frameInset" minX="16" width="55" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.32594625714238024" green="0.33497108605710735" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -181,7 +178,7 @@
         <!--Settings-->
         <scene sceneID="03p-X1-Cdg">
             <objects>
-                <viewController id="Wly-Nr-bcc" customClass="SettingsView" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wly-Nr-bcc" customClass="SettingsVC" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="635-Go-BYq"/>
                         <viewControllerLayoutGuide type="bottom" id="Qf0-D3-hXs"/>
@@ -254,7 +251,7 @@
         <!--Chat-->
         <scene sceneID="Ur1-zR-IyD">
             <objects>
-                <viewController id="KDC-GA-0j9" customClass="ChatView" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KDC-GA-0j9" customClass="ChatVC" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KvG-Tm-Lkf"/>
                         <viewControllerLayoutGuide type="bottom" id="v8q-wl-eO7"/>
@@ -289,15 +286,15 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dso-9n-TS8">
-                                <frame key="frameInset" minY="63" width="600" height="488"/>
+                                <frame key="frameInset" minY="63" width="375" height="555"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="CYg-tO-LX9" customClass="CellView" customModule="ChatDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CYg-tO-LX9" id="WFK-5m-89j">
-                                            <frame key="frameInset" width="600" height="43"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images.png" translatesAutoresizingMaskIntoConstraints="NO" id="qsZ-ea-8iU">
@@ -347,7 +344,7 @@
         <!--Calls-->
         <scene sceneID="NDI-H6-Fez">
             <objects>
-                <viewController id="x5b-OS-tJy" customClass="CallsView" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x5b-OS-tJy" customClass="CallsVC" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rNx-QM-ZFQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jQr-8l-1e2"/>

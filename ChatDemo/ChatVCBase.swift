@@ -1,14 +1,14 @@
 //
-//  VideoView.swift
+//  ChatView.swift
 //  ChatDemo
 //
-//  Created by SHUVO on 8/8/16.
+//  Created by SHUVO on 8/4/16.
 //  Copyright © 2016 SHUVO. All rights reserved.
 //
 
 import UIKit
 
-class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class ChatVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
     struct Item {
         let name: String
@@ -21,10 +21,14 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var plusBtn: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        
         var parser: XMLParser?
         let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
         if path != nil
@@ -39,6 +43,7 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
                 tableView.delegate = self
             }
         }
+            
         else
         {
             NSLog("Failed to find Contacts.xml")
@@ -46,7 +51,6 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
         
         
     }
-    
     
     func setupConstraints() {
         
@@ -70,9 +74,23 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
         let trailingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
         NSLayoutConstraint.activate([topAnchorTableView , bottomAnchorTableView ,leadingAnchorTableView , trailingAnchorTableView])
         
+        plusBtn.translatesAutoresizingMaskIntoConstraints = false
+        let topAnchorPlusBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.plusBtn, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-5)
+        let trailingAnchorPlusBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.plusBtn, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:10)
+        let widthPlusBtn = NSLayoutConstraint(item: self.plusBtn, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:45)
+        let heightPlusBtn = NSLayoutConstraint(item: self.plusBtn, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:50)
+        NSLayoutConstraint.activate([topAnchorPlusBtn , trailingAnchorPlusBtn ,widthPlusBtn , heightPlusBtn])
+        
+        
+        editBtn.translatesAutoresizingMaskIntoConstraints = false
+        let topAnchorEditBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.editBtn, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-5)
+        let ledingAnchorEditBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.editBtn, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:-10)
+        let widthEditBtn = NSLayoutConstraint(item: self.editBtn, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:45)
+        let heightEditBtn = NSLayoutConstraint(item: self.editBtn, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:50)
+        NSLayoutConstraint.activate([topAnchorEditBtn , ledingAnchorEditBtn ,widthEditBtn , heightEditBtn])
+        
         
     }
-    
     
     func parserDidStartDocument(_ parser: XMLParser) {
         items = []
@@ -107,18 +125,18 @@ class VideoView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITa
     {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
         myCell.headerLbl.text = items[(indexPath as NSIndexPath).row].name;
-//        myCell.textLabel?.text = items[indexPath.row].name;
-//        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
+        //        myCell.textLabel?.text = items[indexPath.row].name;
+        //        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
         
         return myCell;
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        self.performSegueWithIdentifier("segue", sender: self)
-//    }
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    //    {
+    //        self.performSegueWithIdentifier("segue", sender: self)
+    //    }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

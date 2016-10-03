@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8A587E91DA257FE0071D549 /* CallsVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587E51DA257FE0071D549 /* CallsVCBase.swift */; };
+		C8A587EA1DA257FE0071D549 /* CallsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587E61DA257FE0071D549 /* CallsVC.swift */; };
+		C8A587EB1DA257FE0071D549 /* SettingsVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587E71DA257FE0071D549 /* SettingsVCBase.swift */; };
+		C8A587EC1DA257FE0071D549 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587E81DA257FE0071D549 /* SettingsVC.swift */; };
+		C8A587EE1DA2586E0071D549 /* VideoVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587ED1DA2586E0071D549 /* VideoVCBase.swift */; };
+		C8A587F01DA258840071D549 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587EF1DA258840071D549 /* VideoVC.swift */; };
+		C8A587F21DA2593A0071D549 /* ChatVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587F11DA2593A0071D549 /* ChatVCBase.swift */; };
+		C8A587F41DA259480071D549 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587F31DA259480071D549 /* ChatVC.swift */; };
+		C8A587F61DA259980071D549 /* ContactsVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587F51DA259980071D549 /* ContactsVCBase.swift */; };
+		C8A587F81DA259AA0071D549 /* ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A587F71DA259AA0071D549 /* ContactsVC.swift */; };
 		C8D130641D59EC7900FC9685 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D130621D59EC7900FC9685 /* Settings.png */; };
 		C8D5DDDC1D59F09100582B1E /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D5DDDB1D59F09100582B1E /* images.png */; };
 		C8D5DDDF1D59F27000582B1E /* Call.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D5DDDD1D59F27000582B1E /* Call.png */; };
@@ -14,10 +24,6 @@
 		C8D5DDE51D59F97B00582B1E /* Contact.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D5DDE21D59F97B00582B1E /* Contact.png */; };
 		C8D5DDE61D59F97B00582B1E /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D5DDE31D59F97B00582B1E /* video.png */; };
 		C8D5DDE81D59F9AD00582B1E /* Setting.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D5DDE71D59F9AD00582B1E /* Setting.png */; };
-		C8FB639B1D58CC08009E3AFD /* CallsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB639A1D58CC08009E3AFD /* CallsView.swift */; };
-		C8FB639D1D58CC33009E3AFD /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB639C1D58CC33009E3AFD /* VideoView.swift */; };
-		C8FB639F1D58CC4A009E3AFD /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB639E1D58CC4A009E3AFD /* ContactsView.swift */; };
-		C8FB63A11D58CC5D009E3AFD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB63A01D58CC5D009E3AFD /* SettingsView.swift */; };
 		C8FB63A31D59050C009E3AFD /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB63A21D59050C009E3AFD /* CellView.swift */; };
 		C8FEC6471D53708000525A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC6461D53708000525A0C /* AppDelegate.swift */; };
 		C8FEC6491D53708000525A0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC6481D53708000525A0C /* ViewController.swift */; };
@@ -27,7 +33,6 @@
 		C8FEC65C1D53708000525A0C /* ChatDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC65B1D53708000525A0C /* ChatDemoTests.swift */; };
 		C8FEC6671D53708000525A0C /* ChatDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC6661D53708000525A0C /* ChatDemoUITests.swift */; };
 		C8FEC6751D537C0C00525A0C /* Contacts.xml in Resources */ = {isa = PBXBuildFile; fileRef = C8FEC6741D537C0C00525A0C /* Contacts.xml */; };
-		C8FEC6771D5393FE00525A0C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FEC6761D5393FE00525A0C /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C8A587E51DA257FE0071D549 /* CallsVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallsVCBase.swift; sourceTree = "<group>"; };
+		C8A587E61DA257FE0071D549 /* CallsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallsVC.swift; sourceTree = "<group>"; };
+		C8A587E71DA257FE0071D549 /* SettingsVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVCBase.swift; sourceTree = "<group>"; };
+		C8A587E81DA257FE0071D549 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		C8A587ED1DA2586E0071D549 /* VideoVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVCBase.swift; sourceTree = "<group>"; };
+		C8A587EF1DA258840071D549 /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
+		C8A587F11DA2593A0071D549 /* ChatVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVCBase.swift; sourceTree = "<group>"; };
+		C8A587F31DA259480071D549 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		C8A587F51DA259980071D549 /* ContactsVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsVCBase.swift; sourceTree = "<group>"; };
+		C8A587F71DA259AA0071D549 /* ContactsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsVC.swift; sourceTree = "<group>"; };
 		C8D130621D59EC7900FC9685 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		C8D5DDDB1D59F09100582B1E /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 		C8D5DDDD1D59F27000582B1E /* Call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Call.png; sourceTree = "<group>"; };
@@ -55,10 +70,6 @@
 		C8D5DDE21D59F97B00582B1E /* Contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Contact.png; sourceTree = "<group>"; };
 		C8D5DDE31D59F97B00582B1E /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video.png; sourceTree = "<group>"; };
 		C8D5DDE71D59F9AD00582B1E /* Setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Setting.png; sourceTree = "<group>"; };
-		C8FB639A1D58CC08009E3AFD /* CallsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallsView.swift; sourceTree = "<group>"; };
-		C8FB639C1D58CC33009E3AFD /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
-		C8FB639E1D58CC4A009E3AFD /* ContactsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
-		C8FB63A01D58CC5D009E3AFD /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C8FB63A21D59050C009E3AFD /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		C8FEC6431D53708000525A0C /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8FEC6461D53708000525A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +85,6 @@
 		C8FEC6661D53708000525A0C /* ChatDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDemoUITests.swift; sourceTree = "<group>"; };
 		C8FEC6681D53708000525A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8FEC6741D537C0C00525A0C /* Contacts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Contacts.xml; sourceTree = "<group>"; };
-		C8FEC6761D5393FE00525A0C /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,11 +137,16 @@
 			children = (
 				C8FEC6461D53708000525A0C /* AppDelegate.swift */,
 				C8FEC6481D53708000525A0C /* ViewController.swift */,
-				C8FB639A1D58CC08009E3AFD /* CallsView.swift */,
-				C8FB639C1D58CC33009E3AFD /* VideoView.swift */,
-				C8FEC6761D5393FE00525A0C /* ChatView.swift */,
-				C8FB639E1D58CC4A009E3AFD /* ContactsView.swift */,
-				C8FB63A01D58CC5D009E3AFD /* SettingsView.swift */,
+				C8A587E51DA257FE0071D549 /* CallsVCBase.swift */,
+				C8A587E61DA257FE0071D549 /* CallsVC.swift */,
+				C8A587ED1DA2586E0071D549 /* VideoVCBase.swift */,
+				C8A587EF1DA258840071D549 /* VideoVC.swift */,
+				C8A587F11DA2593A0071D549 /* ChatVCBase.swift */,
+				C8A587F31DA259480071D549 /* ChatVC.swift */,
+				C8A587F51DA259980071D549 /* ContactsVCBase.swift */,
+				C8A587F71DA259AA0071D549 /* ContactsVC.swift */,
+				C8A587E71DA257FE0071D549 /* SettingsVCBase.swift */,
+				C8A587E81DA257FE0071D549 /* SettingsVC.swift */,
 				C8FB63A21D59050C009E3AFD /* CellView.swift */,
 				C8FEC64A1D53708000525A0C /* Main.storyboard */,
 				C8FEC64D1D53708000525A0C /* Assets.xcassets */,
@@ -312,13 +327,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8FB63A11D58CC5D009E3AFD /* SettingsView.swift in Sources */,
-				C8FB639B1D58CC08009E3AFD /* CallsView.swift in Sources */,
-				C8FB639D1D58CC33009E3AFD /* VideoView.swift in Sources */,
+				C8A587F41DA259480071D549 /* ChatVC.swift in Sources */,
+				C8A587EE1DA2586E0071D549 /* VideoVCBase.swift in Sources */,
+				C8A587EB1DA257FE0071D549 /* SettingsVCBase.swift in Sources */,
+				C8A587F01DA258840071D549 /* VideoVC.swift in Sources */,
+				C8A587E91DA257FE0071D549 /* CallsVCBase.swift in Sources */,
+				C8A587EC1DA257FE0071D549 /* SettingsVC.swift in Sources */,
+				C8A587F21DA2593A0071D549 /* ChatVCBase.swift in Sources */,
 				C8FEC6491D53708000525A0C /* ViewController.swift in Sources */,
+				C8A587F81DA259AA0071D549 /* ContactsVC.swift in Sources */,
 				C8FB63A31D59050C009E3AFD /* CellView.swift in Sources */,
-				C8FB639F1D58CC4A009E3AFD /* ContactsView.swift in Sources */,
-				C8FEC6771D5393FE00525A0C /* ChatView.swift in Sources */,
+				C8A587F61DA259980071D549 /* ContactsVCBase.swift in Sources */,
+				C8A587EA1DA257FE0071D549 /* CallsVC.swift in Sources */,
 				C8FEC6471D53708000525A0C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

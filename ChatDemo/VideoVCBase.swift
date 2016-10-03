@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  VideoView.swift
 //  ChatDemo
 //
 //  Created by SHUVO on 8/8/16.
@@ -8,21 +8,46 @@
 
 import UIKit
 
-class SettingsView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class VideoVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
+    struct Item {
+        let name: String
+        let url: String
+    }
+    
+    var itemName: String?
+    var itemUrl: String?
+    var items: [Item]!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var topLabel: UILabel!
     
-    let section = ["    ", "    ", "    ", "    ", "    "]
-    let items = [["User"], ["Starred Messages", "WhatsApp Web/Desktop"], ["Account", "Chats", "Notifications", "Data Usage"], ["About and Help", "Tell a Friend"], ["Feedback"]]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        tableView.dataSource = self
-        tableView.delegate = self
+        
+        var parser: XMLParser?
+        let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
+        if path != nil
+        {
+            parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))
+            parser?.delegate = self
+            parser?.parse()
+            if parser != nil
+            {
+                print(items)
+                tableView.dataSource = self
+                tableView.delegate = self
+            }
+        }
+            
+        else
+        {
+            NSLog("Failed to find Contacts.xml")
+        }
+        
     }
+    
     
     func setupConstraints() {
         
@@ -50,48 +75,51 @@ class SettingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     
+    func parserDidStartDocument(_ parser: XMLParser) {
+        items = []
+    }
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        if elementName == "item" {
+            itemUrl = attributeDict["imgUrl"]
+            itemName = ""
+        }
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        itemName?.append(string)
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "item" {
+            items.append(Item(name: itemName!, url: itemUrl!))
+            itemName = nil
+            itemUrl = nil
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.items[section].count;
-    }
-    
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return self.section[section]
-        
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-
-        return self.section.count
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        if ((indexPath as NSIndexPath).section == 0) {
-            return 70.0
-        }
-        return 44.0;
+        return items.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
-        
-        if ((indexPath as NSIndexPath).section == 0) {
-            myCell.imgView.image = UIImage(named: "images")
-        }
-        
-        else {
-            myCell.imgView.image = UIImage(named: "Settings")
-        }
-        myCell.headerLbl.text = self.items[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        myCell.headerLbl.text = items[(indexPath as NSIndexPath).row].name;
+        //        myCell.textLabel?.text = items[indexPath.row].name;
+        //        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
         
         return myCell;
     }
-
+    
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    //    {
+    //        self.performSegueWithIdentifier("segue", sender: self)
+    //    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,3 +127,4 @@ class SettingsView: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     
 }
+

@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 //import ContactsUI
 
-class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class ContactsVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
     
     struct Item {
         let name: String
@@ -29,7 +29,7 @@ class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,U
     
     
     
-     var objects = [CNContact]()
+    var objects = [CNContact]()
     
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,U
                 print(items)
                 tableView.dataSource = self
                 tableView.delegate = self
-            //    getContacts()
+                //    getContacts()
             }
         }
         else
@@ -124,19 +124,19 @@ class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,U
     
     // For fetching Contacts
     
-//    func getContacts() {
-//        let store = CNContactStore()
-//        
-//        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
-//            store.requestAccess(for: .contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
-//                if authorized {
-//                    self.retrieveContactsWithStore(store)
-//                }
-//            })
-//        } else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-//            self.retrieveContactsWithStore(store)
-//        }
-//    }
+    //    func getContacts() {
+    //        let store = CNContactStore()
+    //
+    //        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
+    //            store.requestAccess(for: .contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
+    //                if authorized {
+    //                    self.retrieveContactsWithStore(store)
+    //                }
+    //            })
+    //        } else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+    //            self.retrieveContactsWithStore(store)
+    //        }
+    //    }
     
     func retrieveContactsWithStore(_ store: CNContactStore) {
         
@@ -181,15 +181,15 @@ class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,U
         let contact = self.objects[(indexPath as NSIndexPath).row]
         let formatter = CNContactFormatter()
         
-       // myCell.headerLbl.text = items[indexPath.row].name;
+        // myCell.headerLbl.text = items[indexPath.row].name;
         
         myCell.headerLbl.text = formatter.string(from: contact)
         if isExist(myCell.headerLbl.text!) {
             myCell.descriptLbl.text = "Chat Demo Client"
         }
- //       myCell.detailTextLabel?.text = contact.emailAddresses.first?.value as? String
-//        myCell.textLabel?.text = items[indexPath.row].name;
-//        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
+        //       myCell.detailTextLabel?.text = contact.emailAddresses.first?.value as? String
+        //        myCell.textLabel?.text = items[indexPath.row].name;
+        //        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
         
         return myCell;
     }
@@ -204,10 +204,10 @@ class ContactsView: UIViewController, XMLParserDelegate, UITableViewDelegate  ,U
         return false
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        self.performSegueWithIdentifier("segue", sender: self)
-//    }
+    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    //    {
+    //        self.performSegueWithIdentifier("segue", sender: self)
+    //    }
     
     
     override func didReceiveMemoryWarning() {
