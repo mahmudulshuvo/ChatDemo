@@ -8,106 +8,105 @@
 
 import UIKit
 
-class CallsVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class CallsVCBase: UIViewController {
     
-    struct Item {
-        let name: String
-        let url: String
-    }
     
-    var itemName: String?
-    var itemUrl: String?
-    var items: [Item]!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var plusBtn: UIButton!
+    
+    @IBOutlet weak var call: UIImageView!
+    @IBOutlet weak var speaker: UIImageView!
+    @IBOutlet weak var video: UIImageView!
+    @IBOutlet weak var mute: UIImageView!
+    
+
+    @IBOutlet weak var displayView: UIView!
+    var circleView = UIView()
+    var diameter: CGFloat = 0.0
+    
+    var screenSize: CGSize = CGSize(width: 20, height: 30)
+    var counter:Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupConstraints()
-        var parser: XMLParser?
-        let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
-        if path != nil
-        {
-            parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))
-            parser?.delegate = self
-            parser?.parse()
-            if parser != nil
-            {
-                print(items)
-                tableView.dataSource = self
-                tableView.delegate = self
-            }
-        }
-            
-        else
-        {
-            NSLog("Failed to find Contacts.xml")
-        }
-        
+ //       setupConstraints()
         
     }
+    
+    @IBAction func drawCircle(_ sender: AnyObject) {
+        
+        if counter == 0 {
+            counter += 1
+            diameter = min(self.displayView.frame.size.width, self.displayView.frame.size.height) * 0.6;
+            circleView.frame = CGRect(x :0,
+                                      y :0,
+                                      width :diameter, height :diameter);
+            circleView.layer.cornerRadius = diameter / 2;
+            circleView.clipsToBounds = true
+            circleView.layer.borderColor = UIColor.blue.cgColor
+            circleView.layer.borderWidth = 1.0
+            self.displayView.addSubview(circleView)
+            
+            circleView.translatesAutoresizingMaskIntoConstraints = false
+            circleView.centerXAnchor.constraint(equalTo: displayView.centerXAnchor).isActive = true
+            circleView.centerYAnchor.constraint(equalTo: displayView.centerYAnchor).isActive = true
+            circleView.widthAnchor.constraint(equalToConstant: diameter).isActive = true
+            circleView.heightAnchor.constraint(equalToConstant: diameter).isActive = true
+        }
+
+    }
+    
     
     func setupConstraints() {
         
-        self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:0)
-        let bottomAnchorContainerView = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:0)
-        let leadingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
-        let trailingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([topAnchorContainerView , bottomAnchorContainerView ,leadingAnchorContainerView , trailingAnchorContainerView])
+//        print("called \(-(screenSize.height * 0.5))")
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        containerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+//        containerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+//        containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+//        containerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+//        
+//        topLabel.translatesAutoresizingMaskIntoConstraints = false
+//        topLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+//        topLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//        
+//        plusBtn.translatesAutoresizingMaskIntoConstraints = false
+//        plusBtn.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+//        plusBtn.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+//        plusBtn.widthAnchor.constraint(equalToConstant: 45).isActive = true
+//        plusBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        self.topLabel.translatesAutoresizingMaskIntoConstraints = false
-        let centerX = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant:0)
-        let centerY = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([centerX , centerY])
+//        mute.translatesAutoresizingMaskIntoConstraints = false
+//        mute.bottomAnchor.constraint(equalTo: self.view.readableContentGuide.bottomAnchor, constant: -200).isActive = true
+//        mute.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant:20).isActive = true
+//        mute.widthAnchor.constraint(equalToConstant: 80).isActive = true
+//        mute.heightAnchor.constraint(equalToConstant: 70).isActive = true
+//      //mute.heightAnchor.constraint(equalTo: , multiplier: , constant: )
+//        
+//        video.translatesAutoresizingMaskIntoConstraints = false
+//        video.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-200).isActive = true
+//        video.leadingAnchor.constraint(equalTo: mute.trailingAnchor, constant:55).isActive = true
+//        video.widthAnchor.constraint(equalToConstant: 80).isActive = true
+//        video.heightAnchor.constraint(equalToConstant: 70).isActive = true
+//        
+//        speaker.translatesAutoresizingMaskIntoConstraints = false
+//        speaker.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-200).isActive = true
+//        speaker.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant:-20).isActive = true
+//        speaker.widthAnchor.constraint(equalToConstant: 80).isActive = true
+//        speaker.heightAnchor.constraint(equalToConstant: 70).isActive = true
+//        
+//        call.translatesAutoresizingMaskIntoConstraints = false
+//        call.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        call.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-100).isActive = true
+//        call.widthAnchor.constraint(equalToConstant: 80).isActive = true
+//        call.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-60)
-        let bottomAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:60)
-        let leadingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
-        let trailingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([topAnchorTableView , bottomAnchorTableView ,leadingAnchorTableView , trailingAnchorTableView])
-        
     }
+
     
-    func parserDidStartDocument(_ parser: XMLParser) {
-        items = []
-    }
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        if elementName == "item" {
-            itemUrl = attributeDict["imgUrl"]
-            itemName = ""
-        }
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        itemName?.append(string)
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "item" {
-            items.append(Item(name: itemName!, url: itemUrl!))
-            itemName = nil
-            itemUrl = nil
-        }
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return items.count;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
-        myCell.headerLbl.text = items[(indexPath as NSIndexPath).row].name
-        
-        return myCell;
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
