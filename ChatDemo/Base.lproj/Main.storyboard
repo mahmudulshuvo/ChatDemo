@@ -353,16 +353,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y5A-hw-TVB" userLabel="ContainerStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="o0v-i3-dzp" userLabel="TopStackView">
+                                <frame key="frameInset" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emE-zZ-pED">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emE-zZ-pED" userLabel="TopBarView">
+                                        <frame key="frameInset" width="375" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYm-fj-yk5">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYm-fj-yk5">
+                                                <frame key="frameInset" minX="166.5" minY="19.5" width="42.5" height="21.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akl-Nh-aNO">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akl-Nh-aNO">
+                                                <frame key="frameInset" minX="335" minY="3.5" width="30" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                                 <state key="normal" title="+"/>
                                                 <connections>
@@ -371,81 +378,81 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="FYm-fj-yk5" firstAttribute="centerY" secondItem="emE-zZ-pED" secondAttribute="centerY" id="3N9-pV-Geb"/>
-                                            <constraint firstAttribute="height" constant="60" id="CiP-VD-zWM"/>
-                                            <constraint firstAttribute="trailing" secondItem="Akl-Nh-aNO" secondAttribute="trailing" constant="10" id="Fwf-l9-pjb"/>
-                                            <constraint firstItem="FYm-fj-yk5" firstAttribute="centerX" secondItem="emE-zZ-pED" secondAttribute="centerX" id="N0h-u3-vsM"/>
-                                            <constraint firstItem="Akl-Nh-aNO" firstAttribute="centerY" secondItem="emE-zZ-pED" secondAttribute="centerY" id="uQS-Un-yQA"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="GXH-Vl-QrM"/>
-                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-2Q-9sQ" userLabel="DisplayStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5ic-Hk-1B8" userLabel="DisplayStackView">
+                                <frame key="frameInset" minY="60" width="375" height="382"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ueo-in-5SF">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ueo-in-5SF" userLabel="DisplayView">
+                                        <frame key="frameInset" width="375" height="382"/>
                                         <color key="backgroundColor" red="1" green="0.3494888429022126" blue="0.35378060560143854" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ueo-in-5SF" firstAttribute="leading" secondItem="bKK-2Q-9sQ" secondAttribute="leading" id="cAe-uu-JTP"/>
-                                    <constraint firstItem="Ueo-in-5SF" firstAttribute="top" secondItem="bKK-2Q-9sQ" secondAttribute="top" id="fQl-xB-P4I"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ueo-in-5SF" secondAttribute="bottom" id="iyj-5p-FIa"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ueo-in-5SF" secondAttribute="trailing" id="xsi-TT-QbO"/>
-                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mUY-96-5wV" userLabel="CallStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ATW-pv-PmR" userLabel="MiddleStackView">
+                                <frame key="frameInset" minY="442" width="375" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Call.png" translatesAutoresizingMaskIntoConstraints="NO" id="vPr-P5-fCU">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="RHM-55-5Rc"/>
-                                        </constraints>
-                                    </imageView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbR-Dk-nEr" userLabel="MiddleBtnView">
+                                        <frame key="frameInset" width="375" height="87"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GQO-ap-GuR" userLabel="MiddleBtnStack">
+                                                <frame key="frameInset" minX="13" minY="11" width="192" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYB-cR-4eo" userLabel="Mute">
+                                                        <frame key="frameInset" width="64" height="64"/>
+                                                        <state key="normal" image="muted"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P4-Fl-b0P" userLabel="Video">
+                                                        <frame key="frameInset" minX="64" width="64" height="64"/>
+                                                        <state key="normal" image="videoCall"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zyd-aE-Qdo" userLabel="Speaker">
+                                                        <frame key="frameInset" minX="128" width="64" height="64"/>
+                                                        <state key="normal" image="speaker"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.50854560181318209" green="1" blue="0.58002852091945356" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="wQC-h7-2Cu"/>
-                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="93V-pq-MpW" userLabel="MiddleStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="34A-wN-seL" userLabel="BottomStackView">
+                                <frame key="frameInset" minY="530" width="375" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contact.png" translatesAutoresizingMaskIntoConstraints="NO" id="wwh-St-Ozd"/>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video.png" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-sC-y37"/>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chat.png" translatesAutoresizingMaskIntoConstraints="NO" id="AD0-MZ-DFW"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1P-SV-sXh" userLabel="BottomBtnView">
+                                        <frame key="frameInset" width="375" height="87"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxR-iQ-WlK" userLabel="Speaker">
+                                                <frame key="frameInset" minX="152" minY="8" width="70" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="callEnd"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.39705219106905021" green="0.47127091854627035" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Twc-gI-8ym"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Y5A-hw-TVB" firstAttribute="leading" secondItem="oY1-hh-1Aj" secondAttribute="leading" id="1ju-Hl-EqR"/>
-                            <constraint firstItem="bKK-2Q-9sQ" firstAttribute="top" secondItem="Y5A-hw-TVB" secondAttribute="bottom" id="4vP-CN-s46"/>
-                            <constraint firstItem="mUY-96-5wV" firstAttribute="centerX" secondItem="oY1-hh-1Aj" secondAttribute="centerX" id="F4r-bl-YLH"/>
-                            <constraint firstItem="Y5A-hw-TVB" firstAttribute="top" secondItem="oY1-hh-1Aj" secondAttribute="top" id="Ggm-7m-SQm"/>
-                            <constraint firstAttribute="trailing" secondItem="Y5A-hw-TVB" secondAttribute="trailing" id="HlU-6b-YwE"/>
-                            <constraint firstItem="mUY-96-5wV" firstAttribute="top" secondItem="93V-pq-MpW" secondAttribute="bottom" constant="15" id="KP2-Vg-Gul"/>
-                            <constraint firstItem="bKK-2Q-9sQ" firstAttribute="leading" secondItem="Y5A-hw-TVB" secondAttribute="leading" id="L6y-dv-q4Y"/>
-                            <constraint firstItem="93V-pq-MpW" firstAttribute="top" secondItem="bKK-2Q-9sQ" secondAttribute="bottom" constant="15" id="YWq-Lw-JC7"/>
-                            <constraint firstItem="jQr-8l-1e2" firstAttribute="top" secondItem="mUY-96-5wV" secondAttribute="bottom" constant="15" id="dKu-RP-wGX"/>
-                            <constraint firstItem="bKK-2Q-9sQ" firstAttribute="trailing" secondItem="Y5A-hw-TVB" secondAttribute="trailing" id="j0e-Or-dne"/>
-                            <constraint firstAttribute="trailing" secondItem="93V-pq-MpW" secondAttribute="trailing" constant="30" id="wlg-5T-I7s"/>
-                            <constraint firstItem="93V-pq-MpW" firstAttribute="leading" secondItem="oY1-hh-1Aj" secondAttribute="leading" constant="30" id="ysr-wI-3ny"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calls" image="Call.png" selectedImage="Call.png" id="bgA-qc-MLx"/>
                     <connections>
-                        <outlet property="call" destination="vPr-P5-fCU" id="Fft-M5-QGZ"/>
+                        <outlet property="bottomStack" destination="34A-wN-seL" id="erV-B7-Ub8"/>
+                        <outlet property="callEndBtn" destination="vxR-iQ-WlK" id="kO7-zW-Q0W"/>
                         <outlet property="containerView" destination="emE-zZ-pED" id="s2U-C1-Ojz"/>
+                        <outlet property="displayStack" destination="5ic-Hk-1B8" id="YqN-Il-WB4"/>
                         <outlet property="displayView" destination="Ueo-in-5SF" id="7fj-SS-BRa"/>
-                        <outlet property="mute" destination="wwh-St-Ozd" id="7FO-pw-Vg9"/>
+                        <outlet property="middleBtnStack" destination="GQO-ap-GuR" id="KkN-Dn-WSo"/>
+                        <outlet property="middleStack" destination="ATW-pv-PmR" id="130-3U-10K"/>
                         <outlet property="plusBtn" destination="Akl-Nh-aNO" id="VyL-IG-byG"/>
-                        <outlet property="speaker" destination="AD0-MZ-DFW" id="UIj-Sn-YBl"/>
                         <outlet property="topLabel" destination="FYm-fj-yk5" id="8aI-ZB-f1o"/>
-                        <outlet property="video" destination="2oI-sC-y37" id="8px-AC-aad"/>
+                        <outlet property="topStack" destination="o0v-i3-dzp" id="W3r-fO-6Aa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNZ-1i-Uhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -479,7 +486,11 @@
         <image name="Chat.png" width="30" height="24"/>
         <image name="Contact.png" width="30" height="30"/>
         <image name="Setting.png" width="28" height="28"/>
+        <image name="callEnd" width="64" height="64"/>
         <image name="images.png" width="226" height="223"/>
+        <image name="muted" width="64" height="64"/>
+        <image name="speaker" width="64" height="64"/>
         <image name="video.png" width="28" height="28"/>
+        <image name="videoCall" width="64" height="64"/>
     </resources>
 </document>
