@@ -18,64 +18,118 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="070-WW-HqW">
-                                <frame key="frameInset" minY="63" width="375" height="555"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="30" id="Icg-cp-d2b" customClass="CellView" customModule="ChatDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="30"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Icg-cp-d2b" id="p1T-2C-5y6">
-                                            <frame key="frameInset" width="375" height="29.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRU-DZ-a6t">
-                                                    <frame key="frameInset" minX="30" width="203" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eji-zq-udR">
-                                                    <frame key="frameInset" minX="30" minY="15" width="42" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descriptLbl" destination="eji-zq-udR" id="RjK-mF-tr6"/>
-                                            <outlet property="headerLbl" destination="JRU-DZ-a6t" id="8om-OM-4AE"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AFq-b3-lka">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-i5-3Hi" userLabel="TopStackView">
                                 <frame key="frameInset" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-m4-808">
-                                        <frame key="frameInset" minX="162" minY="21" width="50" height="21.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AFq-b3-lka" userLabel="TopBarView">
+                                        <frame key="frameInset" width="375" height="63"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dv-m4-808" userLabel="Top Label">
+                                                <frame key="frameInset" minX="162" minY="21" width="50" height="21.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YW-aN-fG6" userLabel="Plus Btn">
+                                                <frame key="frameInset" minX="337" minY="5" width="30" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="drawCircle:" destination="InC-jV-cvb" eventType="touchUpInside" id="Ae2-WB-Pqy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0ZN-sX-H1P" userLabel="DisplayStackView">
+                                <frame key="frameInset" minY="63" width="375" height="382"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-bL-C8z" userLabel="DisplayView">
+                                        <frame key="frameInset" width="375" height="382"/>
+                                        <color key="backgroundColor" red="1" green="0.34948884289999999" blue="0.35378060560000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="O0e-ef-AwL" userLabel="MiddleStackView">
+                                <frame key="frameInset" minY="445" width="375" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eDS-mv-3ej" userLabel="MiddleBtnView">
+                                        <frame key="frameInset" width="375" height="87"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bcd-iZ-9Ps" userLabel="MiddleBtnStack">
+                                                <frame key="frameInset" minX="13" minY="11" width="192" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9uu-Ep-TfM" userLabel="Mute">
+                                                        <frame key="frameInset" width="64" height="64"/>
+                                                        <state key="normal" image="muted"/>
+                                                        <connections>
+                                                            <action selector="muteBtnAction:" destination="InC-jV-cvb" eventType="touchUpInside" id="pZK-em-jqM"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpX-eb-iXk" userLabel="Video">
+                                                        <frame key="frameInset" minX="64" width="64" height="64"/>
+                                                        <state key="normal" image="videoCall"/>
+                                                        <connections>
+                                                            <action selector="videoBtnAction:" destination="InC-jV-cvb" eventType="touchUpInside" id="HCx-hu-LLA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heD-Yg-acW" userLabel="Speaker">
+                                                        <frame key="frameInset" minX="128" width="64" height="64"/>
+                                                        <state key="normal" image="speaker"/>
+                                                        <connections>
+                                                            <action selector="speakerBtnAction:" destination="InC-jV-cvb" eventType="touchUpInside" id="z4O-bV-hrT"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.50854560179999997" green="1" blue="0.58002852090000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4ZV-Li-Z4C" userLabel="BottomStackView">
+                                <frame key="frameInset" minY="531" width="375" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDb-wA-9RB" userLabel="BottomBtnView">
+                                        <frame key="frameInset" width="375" height="87"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGl-st-QYx" userLabel="Speaker">
+                                                <frame key="frameInset" minX="152" minY="8" width="70" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="callEnd"/>
+                                                <connections>
+                                                    <action selector="callBtnAction:" destination="InC-jV-cvb" eventType="touchUpInside" id="Umr-74-NwD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.39705219110000001" green="0.47127091850000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="video.png" id="utd-jC-9kH"/>
                     <connections>
-                        <outlet property="containerView" destination="AFq-b3-lka" id="z9Q-lE-h0n"/>
-                        <outlet property="tableView" destination="070-WW-HqW" id="0Qf-F5-feV"/>
-                        <outlet property="topLabel" destination="1dv-m4-808" id="PW6-Nx-4sr"/>
+                        <outlet property="bottomStack" destination="4ZV-Li-Z4C" id="ktG-Bf-GL5"/>
+                        <outlet property="callEndBtn" destination="pGl-st-QYx" id="Wzv-wH-FXF"/>
+                        <outlet property="containerView" destination="AFq-b3-lka" id="Ytp-Hg-O27"/>
+                        <outlet property="displayStack" destination="0ZN-sX-H1P" id="33t-uZ-v9t"/>
+                        <outlet property="displayView" destination="qoH-bL-C8z" id="Poi-Lp-hGJ"/>
+                        <outlet property="middleBtnStack" destination="Bcd-iZ-9Ps" id="xAi-Db-iIh"/>
+                        <outlet property="middleStack" destination="O0e-ef-AwL" id="uDd-6Q-tWH"/>
+                        <outlet property="plusBtn" destination="3YW-aN-fG6" id="khj-0h-HuS"/>
+                        <outlet property="topLabel" destination="1dv-m4-808" id="91n-CP-wN8"/>
+                        <outlet property="topStack" destination="Ari-i5-3Hi" id="7Dr-yz-ngk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fzf-u1-yha" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gst-Vd-j24" id="qQW-zw-0bF">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu8-8Q-OFd">
@@ -211,7 +265,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yX5-y5-X7S" id="abu-Dm-saK">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4T-XN-O7l">
@@ -294,7 +348,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CYg-tO-LX9" id="WFK-5m-89j">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images.png" translatesAutoresizingMaskIntoConstraints="NO" id="qsZ-ea-8iU">
@@ -344,7 +398,7 @@
         <!--Calls-->
         <scene sceneID="NDI-H6-Fez">
             <objects>
-                <viewController id="x5b-OS-tJy" customClass="CallsVCBase" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="x5b-OS-tJy" customClass="CallsVC" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rNx-QM-ZFQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jQr-8l-1e2"/>
@@ -361,19 +415,19 @@
                                         <frame key="frameInset" width="375" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYm-fj-yk5">
-                                                <frame key="frameInset" minX="166.5" minY="19.5" width="42.5" height="21.5"/>
+                                                <frame key="frameInset" minX="167" minY="20" width="43" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akl-Nh-aNO">
-                                                <frame key="frameInset" minX="335" minY="3.5" width="30" height="53"/>
+                                                <frame key="frameInset" minX="335" minY="4" width="30" height="53"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                                 <state key="normal" title="+"/>
                                                 <connections>
-                                                    <action selector="drawCircle:" destination="x5b-OS-tJy" eventType="touchUpInside" id="Nnn-Od-fRn"/>
+                                                    <action selector="drawCircle:" destination="x5b-OS-tJy" eventType="touchUpInside" id="LhW-Zd-K3c"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -405,14 +459,23 @@
                                                     <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYB-cR-4eo" userLabel="Mute">
                                                         <frame key="frameInset" width="64" height="64"/>
                                                         <state key="normal" image="muted"/>
+                                                        <connections>
+                                                            <action selector="muteBtnAction:" destination="x5b-OS-tJy" eventType="touchUpInside" id="V28-vh-wbp"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P4-Fl-b0P" userLabel="Video">
                                                         <frame key="frameInset" minX="64" width="64" height="64"/>
                                                         <state key="normal" image="videoCall"/>
+                                                        <connections>
+                                                            <action selector="videoBtnAction:" destination="x5b-OS-tJy" eventType="touchUpInside" id="1Cz-sw-pS5"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zyd-aE-Qdo" userLabel="Speaker">
                                                         <frame key="frameInset" minX="128" width="64" height="64"/>
                                                         <state key="normal" image="speaker"/>
+                                                        <connections>
+                                                            <action selector="speakerBtnAction:" destination="x5b-OS-tJy" eventType="touchUpInside" id="L4G-Nu-DLA"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -432,6 +495,9 @@
                                                 <frame key="frameInset" minX="152" minY="8" width="70" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="callEnd"/>
+                                                <connections>
+                                                    <action selector="callBtnAction:" destination="x5b-OS-tJy" eventType="touchUpInside" id="k0k-C4-NNz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.39705219106905021" green="0.47127091854627035" blue="1" alpha="1" colorSpace="calibratedRGB"/>

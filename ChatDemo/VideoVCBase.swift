@@ -8,116 +8,127 @@
 
 import UIKit
 
-class VideoVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  ,UITableViewDataSource {
+class VideoVCBase: UIViewController {
     
-    struct Item {
-        let name: String
-        let url: String
-    }
-    
-    var itemName: String?
-    var itemUrl: String?
-    var items: [Item]!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var plusBtn: UIButton!
+    
+    @IBOutlet weak var topStack: UIStackView!
+    @IBOutlet weak var displayStack: UIStackView!
+    @IBOutlet weak var middleStack: UIStackView!
+    @IBOutlet weak var bottomStack: UIStackView!
+    
+    @IBOutlet weak var middleBtnStack: UIStackView!
+    @IBOutlet weak var callEndBtn: UIButton!
+    @IBOutlet weak var displayView: UIView!
+    
+    var circleFirstHorizontalStack = UIStackView()
+    var circleSecondHorizontalStack = UIStackView()
+    var circleThirdHorizontalStack = UIStackView()
+    var circleVerticalStack = UIStackView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        
-        var parser: XMLParser?
-        let path = Bundle.main.path(forResource: "Contacts", ofType: "xml")
-        if path != nil
-        {
-            parser = XMLParser(contentsOf: URL(fileURLWithPath: path!))
-            parser?.delegate = self
-            parser?.parse()
-            if parser != nil
-            {
-                print(items)
-                tableView.dataSource = self
-                tableView.delegate = self
-            }
-        }
-            
-        else
-        {
-            NSLog("Failed to find Contacts.xml")
-        }
-        
     }
     
     
     func setupConstraints() {
         
-        self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:0)
-        let bottomAnchorContainerView = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:0)
-        let leadingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
-        let trailingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([topAnchorContainerView , bottomAnchorContainerView ,leadingAnchorContainerView , trailingAnchorContainerView])
+        // //Setting Up Top
+        topStack.translatesAutoresizingMaskIntoConstraints = false
+        topStack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        topStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        topStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        topStack.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1, constant: 0).isActive = true
         
-        self.topLabel.translatesAutoresizingMaskIntoConstraints = false
-        let centerX = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant:0)
-        let centerY = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([centerX , centerY])
+        topLabel.translatesAutoresizingMaskIntoConstraints = false
+        topLabel.centerXAnchor.constraint(equalTo: topStack.centerXAnchor).isActive = true
+        topLabel.centerYAnchor.constraint(equalTo: topStack.centerYAnchor).isActive = true
         
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-60)
-        let bottomAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:60)
-        let leadingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
-        let trailingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([topAnchorTableView , bottomAnchorTableView ,leadingAnchorTableView , trailingAnchorTableView])
+        plusBtn.translatesAutoresizingMaskIntoConstraints = false
+        plusBtn.centerYAnchor.constraint(equalTo: topStack.centerYAnchor).isActive = true
+        plusBtn.trailingAnchor.constraint(equalTo: topStack.trailingAnchor, constant: -10).isActive = true
+        plusBtn.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        plusBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         
-    }
-    
-    
-    func parserDidStartDocument(_ parser: XMLParser) {
-        items = []
-    }
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        if elementName == "item" {
-            itemUrl = attributeDict["imgUrl"]
-            itemName = ""
-        }
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        itemName?.append(string)
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "item" {
-            items.append(Item(name: itemName!, url: itemUrl!))
-            itemName = nil
-            itemUrl = nil
-        }
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return items.count;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CellView
-        myCell.headerLbl.text = items[(indexPath as NSIndexPath).row].name;
-        //        myCell.textLabel?.text = items[indexPath.row].name;
-        //        myCell.imageView?.image = UIImage(named: items[indexPath.row].url);
+        //Setting Circle Display Stacks
+        displayStack.translatesAutoresizingMaskIntoConstraints = false
+        displayStack.topAnchor.constraint(equalTo: topStack.bottomAnchor, constant: 0).isActive = true
+        displayStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        displayStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        displayStack.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.6, constant: -50).isActive = true
         
-        return myCell;
+        displayStack.addArrangedSubview(displayView)
+        
+        displayView.translatesAutoresizingMaskIntoConstraints = false
+        displayView.topAnchor.constraint(equalTo: displayStack.topAnchor, constant: 0).isActive = true
+        displayView.leadingAnchor.constraint(equalTo: displayStack.leadingAnchor, constant: 0).isActive = true
+        displayView.trailingAnchor.constraint(equalTo: displayStack.trailingAnchor, constant: 0).isActive = true
+        displayView.heightAnchor.constraint(equalTo: displayStack.heightAnchor).isActive = true
+        
+        circleFirstHorizontalStack.translatesAutoresizingMaskIntoConstraints = false
+        circleFirstHorizontalStack.alignment = UIStackViewAlignment.fill
+        circleFirstHorizontalStack.distribution = UIStackViewDistribution.fillEqually
+        circleFirstHorizontalStack.spacing = 0.0
+        circleFirstHorizontalStack.axis = .horizontal
+        
+        circleSecondHorizontalStack.translatesAutoresizingMaskIntoConstraints = false
+        circleSecondHorizontalStack.alignment = UIStackViewAlignment.fill
+        circleSecondHorizontalStack.distribution = UIStackViewDistribution.fillEqually
+        circleSecondHorizontalStack.spacing = 0.0
+        circleSecondHorizontalStack.axis = .horizontal
+        
+        circleThirdHorizontalStack.translatesAutoresizingMaskIntoConstraints = false
+        circleThirdHorizontalStack.alignment = UIStackViewAlignment.fill
+        circleThirdHorizontalStack.distribution = UIStackViewDistribution.fillEqually
+        circleThirdHorizontalStack.spacing = 0.0
+        circleThirdHorizontalStack.axis = .horizontal
+        
+        circleVerticalStack.translatesAutoresizingMaskIntoConstraints = false
+        circleVerticalStack.alignment = UIStackViewAlignment.fill
+        circleVerticalStack.distribution = UIStackViewDistribution.fillEqually
+        circleVerticalStack.spacing = 0.0
+        circleVerticalStack.axis = .vertical
+        
+        displayView.addSubview(circleVerticalStack)
+        
+        circleVerticalStack.topAnchor.constraint(equalTo: displayView.topAnchor).isActive = true
+        circleVerticalStack.leadingAnchor.constraint(equalTo: displayView.leadingAnchor).isActive = true
+        circleVerticalStack.trailingAnchor.constraint(equalTo: displayView.trailingAnchor).isActive = true
+        circleVerticalStack.heightAnchor.constraint(equalTo: displayView.heightAnchor).isActive = true
+        
+        //Setting Middle Stacks
+        middleStack.translatesAutoresizingMaskIntoConstraints = false
+        middleStack.topAnchor.constraint(equalTo: displayStack.bottomAnchor, constant: 0).isActive = true
+        middleStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        middleStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        middleStack.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.15, constant: 0).isActive = true
+        
+        middleBtnStack.translatesAutoresizingMaskIntoConstraints = false
+        middleBtnStack.topAnchor.constraint(equalTo: middleStack.topAnchor, constant: 0).isActive = true
+        middleBtnStack.leadingAnchor.constraint(equalTo: middleStack.leadingAnchor, constant: 30).isActive = true
+        middleBtnStack.trailingAnchor.constraint(equalTo: middleStack.trailingAnchor, constant: -30).isActive = true
+        middleBtnStack.bottomAnchor.constraint(equalTo: middleStack.bottomAnchor, constant: 0).isActive = true
+        middleStack.distribution = UIStackViewDistribution.fillEqually
+        middleStack.alignment = UIStackViewAlignment.fill
+        
+        //Setting Bottom Stacks
+        bottomStack.translatesAutoresizingMaskIntoConstraints = false
+        bottomStack.topAnchor.constraint(equalTo: middleStack.bottomAnchor, constant: 0).isActive = true
+        bottomStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        bottomStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        bottomStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -48).isActive = true
+        
+        callEndBtn.translatesAutoresizingMaskIntoConstraints = false
+        callEndBtn.centerXAnchor.constraint(equalTo: bottomStack.centerXAnchor).isActive = true
+        callEndBtn.centerYAnchor.constraint(equalTo: bottomStack.centerYAnchor).isActive = true
+        
+        
     }
-    
-    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    //    {
-    //        self.performSegueWithIdentifier("segue", sender: self)
-    //    }
     
     
     override func didReceiveMemoryWarning() {
