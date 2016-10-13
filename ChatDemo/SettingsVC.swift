@@ -10,9 +10,15 @@ import UIKit
 
 class SettingsVC: SettingsVCBase {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        // printDemo()
     }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+  
+    }
+   
     
 }

@@ -26,7 +26,8 @@ class ContactsVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var plusBtn: UIButton!
-    
+    @IBOutlet weak var topStack: UIStackView!
+    @IBOutlet weak var middleStack: UIStackView!
     
     
     var objects = [CNContact]()
@@ -61,41 +62,35 @@ class ContactsVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  
     
     func setupConstraints() {
         
-        self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:0)
-        let bottomAnchorContainerView = NSLayoutConstraint(item: self.tableView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:0)
-        let leadingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
-        let trailingAnchorContainerView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.containerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([topAnchorContainerView , bottomAnchorContainerView ,leadingAnchorContainerView , trailingAnchorContainerView])
+        // //Setting Up Top
+        topStack.translatesAutoresizingMaskIntoConstraints = false
+        topStack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        topStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        topStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        topStack.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1, constant: 0).isActive = true
         
-        self.topLabel.translatesAutoresizingMaskIntoConstraints = false
-        let centerX = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant:0)
-        let centerY = NSLayoutConstraint(item: self.containerView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal,toItem: self.topLabel, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([centerX , centerY])
-        
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-60)
-        let bottomAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant:60)
-        let leadingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:0)
-        let trailingAnchorTableView = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.tableView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:0)
-        NSLayoutConstraint.activate([topAnchorTableView , bottomAnchorTableView ,leadingAnchorTableView , trailingAnchorTableView])
+        topLabel.translatesAutoresizingMaskIntoConstraints = false
+        topLabel.centerXAnchor.constraint(equalTo: topStack.centerXAnchor).isActive = true
+        topLabel.centerYAnchor.constraint(equalTo: topStack.centerYAnchor).isActive = true
         
         plusBtn.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorPlusBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.plusBtn, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-5)
-        let trailingAnchorPlusBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal,toItem:self.plusBtn, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant:10)
-        let widthPlusBtn = NSLayoutConstraint(item: self.plusBtn, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:45)
-        let heightPlusBtn = NSLayoutConstraint(item: self.plusBtn, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:50)
-        NSLayoutConstraint.activate([topAnchorPlusBtn , trailingAnchorPlusBtn ,widthPlusBtn , heightPlusBtn])
-        
+        plusBtn.centerYAnchor.constraint(equalTo: topStack.centerYAnchor).isActive = true
+        plusBtn.trailingAnchor.constraint(equalTo: topStack.trailingAnchor, constant: -10).isActive = true
+        plusBtn.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        plusBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         editBtn.translatesAutoresizingMaskIntoConstraints = false
-        let topAnchorEditBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal,toItem:self.editBtn, attribute: NSLayoutAttribute.top, multiplier: 1, constant:-5)
-        let ledingAnchorEditBtn = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal,toItem:self.editBtn, attribute: NSLayoutAttribute.leading, multiplier: 1, constant:-10)
-        let widthEditBtn = NSLayoutConstraint(item: self.editBtn, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:45)
-        let heightEditBtn = NSLayoutConstraint(item: self.editBtn, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant:50)
-        NSLayoutConstraint.activate([topAnchorEditBtn , ledingAnchorEditBtn ,widthEditBtn , heightEditBtn])
+        editBtn.centerYAnchor.constraint(equalTo: topStack.centerYAnchor).isActive = true
+        editBtn.leadingAnchor.constraint(equalTo: topStack.leadingAnchor, constant: 10).isActive = true
+        editBtn.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        editBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+        middleStack.translatesAutoresizingMaskIntoConstraints = false
+        middleStack.topAnchor.constraint(equalTo: topStack.bottomAnchor, constant: 0).isActive = true
+        middleStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        middleStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        middleStack.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.9, constant: -50).isActive = true
+
         
     }
     

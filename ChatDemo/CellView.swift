@@ -13,5 +13,9 @@ class CellView: UITableViewCell {
     @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var descriptLbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var privacyDescription: UILabel!
+    @IBOutlet weak var `switch`: UISwitch!
+    @IBOutlet weak var selectionMark: UIImageView!
     
 }
