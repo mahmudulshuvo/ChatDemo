@@ -155,6 +155,7 @@ class PrivacyVCBase: UIViewController, UITableViewDataSource, UITableViewDelegat
         if (indexPath.section == 2) {
             myCell.statusLbl.isHidden = true
             myCell.switch.isHidden = false
+            myCell.accessoryType = .none
         }
         
         myCell.privacyDescription.text  = self.items[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]

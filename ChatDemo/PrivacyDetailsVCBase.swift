@@ -59,6 +59,12 @@ class PrivacyDetailsVCBase: UIViewController, UITableViewDataSource, UITableView
         middleStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
         middleStack.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.9, constant: -50).isActive = true
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: middleStack.topAnchor, constant: 0).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: middleStack.leadingAnchor, constant: 0).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: middleStack.trailingAnchor, constant: 0).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: middleStack.bottomAnchor, constant: 0).isActive = true
+        
         
     }
     
@@ -126,12 +132,13 @@ class PrivacyDetailsVCBase: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        for cell in tableView.visibleCells as! Array<CellView> {
-            cell.selectionMark.isHidden = true
-        }
+//        for cell in tableView.visibleCells as! Array<CellView> {
+//            cell.selectionMark.isHidden = true
+//        }
         
         let cell = tableView.cellForRow(at: indexPath) as! CellView
-        cell.selectionMark.isHidden = false
+      //  cell.selectionMark.isHidden = false
+        cell.accessoryType = .checkmark
         
         if topLabelTxt == "Last Seen" {
             lastSeenLbl = cell.privacyDescription.text!

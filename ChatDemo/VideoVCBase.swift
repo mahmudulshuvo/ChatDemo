@@ -25,13 +25,45 @@ class VideoVCBase: UIViewController {
     
     var circleFirstHorizontalStack = UIStackView()
     var circleSecondHorizontalStack = UIStackView()
-    var circleThirdHorizontalStack = UIStackView()
+//    var circleThirdHorizontalStack = UIStackView()
     var circleVerticalStack = UIStackView()
+    
+    var circleView = [UIView]()
+    var testView = [UIView]()
+    var diameter: CGFloat = 0.0
+    var counter: Int = -1
+    var check: Bool = false
+    var checkPortrait: Bool = false
+    var checkLandScape: Bool = false
+    var orientationCounter: Int = 0
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.orientationChangedVideo(notification:)),
+            name: NSNotification.Name.UIDeviceOrientationDidChange,
+            object: nil)
+        
+        if UIScreen.main.bounds.height < UIScreen.main.bounds.width {
+            
+            // LandScape Mode
+            checkLandScape = true
+            checkPortrait = false
+        }
+            
+        else {
+            
+            // Portrait Mode
+            checkPortrait = true
+            checkLandScape = false
+            
+        }
     }
     
     
@@ -70,6 +102,10 @@ class VideoVCBase: UIViewController {
         displayView.trailingAnchor.constraint(equalTo: displayStack.trailingAnchor, constant: 0).isActive = true
         displayView.heightAnchor.constraint(equalTo: displayStack.heightAnchor).isActive = true
         
+        // Diameter Calculation
+        
+        diameter = min(displayView.frame.size.width, displayView.frame.size.height) * 0.45
+        
         circleFirstHorizontalStack.translatesAutoresizingMaskIntoConstraints = false
         circleFirstHorizontalStack.alignment = UIStackViewAlignment.fill
         circleFirstHorizontalStack.distribution = UIStackViewDistribution.fillEqually
@@ -82,11 +118,11 @@ class VideoVCBase: UIViewController {
         circleSecondHorizontalStack.spacing = 0.0
         circleSecondHorizontalStack.axis = .horizontal
         
-        circleThirdHorizontalStack.translatesAutoresizingMaskIntoConstraints = false
-        circleThirdHorizontalStack.alignment = UIStackViewAlignment.fill
-        circleThirdHorizontalStack.distribution = UIStackViewDistribution.fillEqually
-        circleThirdHorizontalStack.spacing = 0.0
-        circleThirdHorizontalStack.axis = .horizontal
+//        circleThirdHorizontalStack.translatesAutoresizingMaskIntoConstraints = false
+//        circleThirdHorizontalStack.alignment = UIStackViewAlignment.fill
+//        circleThirdHorizontalStack.distribution = UIStackViewDistribution.fillEqually
+//        circleThirdHorizontalStack.spacing = 0.0
+//        circleThirdHorizontalStack.axis = .horizontal
         
         circleVerticalStack.translatesAutoresizingMaskIntoConstraints = false
         circleVerticalStack.alignment = UIStackViewAlignment.fill
@@ -129,6 +165,224 @@ class VideoVCBase: UIViewController {
         
         
     }
+    
+    
+    func orientationChangedVideo(notification : NSNotification) {
+        
+        if UIScreen.main.bounds.height < UIScreen.main.bounds.width {
+            
+            // LandScape Mode
+            checkLandScape = true
+            checkPortrait = false
+            if counter > 0 {
+                setUpCircles()
+            }
+            
+        }
+            
+        else {
+            
+            // Portrait Mode
+            checkPortrait = true
+            checkLandScape = false
+            if counter > 0 {
+                setUpCircles()
+            }
+            
+        }
+        
+    }
+    
+    
+    func setUpCircles() {
+        
+        if checkPortrait {
+            print("On portrait")
+            checkLandScape = false
+            
+            circleVerticalStack.axis = .vertical
+            
+            for i in 0 ..< counter+1
+            {
+                
+                if (i == 0 || i == 1) {
+                    circleFirstHorizontalStack.removeArrangedSubview(testView[i])
+                    
+                    if i == 0 {
+                        circleVerticalStack.removeArrangedSubview(circleFirstHorizontalStack)
+                    }
+                    if i == 1 {
+                        circleFirstHorizontalStack.removeFromSuperview()
+                    }
+                }
+                
+                if (i == 2 || i == 3) {
+                    circleSecondHorizontalStack.removeArrangedSubview(testView[i])
+                    if i == 2 {
+                        circleVerticalStack.removeArrangedSubview(circleSecondHorizontalStack)
+                    }
+                    if i == 3 {
+                        circleSecondHorizontalStack.removeFromSuperview()
+                    }
+                }
+                
+//                if (i == 4 || i == 5) {
+//                    circleThirdHorizontalStack.removeArrangedSubview(testView[i])
+//                    if i == 4 {
+//                        circleVerticalStack.removeArrangedSubview(circleThirdHorizontalStack)
+//                    }
+//                    
+//                    if i == 5 {
+//                        circleThirdHorizontalStack.removeFromSuperview()
+//                    }
+//                }
+                
+                circleVerticalStack.removeArrangedSubview(testView[i])
+                testView[i].removeFromSuperview()
+            }
+            
+            for i in 0 ..< counter+1
+            {
+                
+                if (i == 0 || i == 1) {
+                    circleFirstHorizontalStack.addArrangedSubview(testView[i])
+                    
+                    if i == 0 {
+                        circleVerticalStack.addArrangedSubview(circleFirstHorizontalStack)
+                        displayView.addSubview(circleVerticalStack)
+                    }
+                }
+                
+                if (i == 2 || i == 3) {
+                    
+                    circleSecondHorizontalStack.addArrangedSubview(testView[i])
+                    
+                    if i == 2 {
+                        circleVerticalStack.addArrangedSubview(circleSecondHorizontalStack)
+                    }
+                }
+                
+//                if (i == 4 || i == 5) {
+//                    circleThirdHorizontalStack.addArrangedSubview(testView[i])
+//                    if i == 4 {
+//                        circleVerticalStack.addArrangedSubview(circleThirdHorizontalStack)
+//                    }
+//                }
+            }
+            
+            
+        }
+        
+        
+        
+        if checkLandScape {
+            checkPortrait = false
+            
+            print("On Landscape")
+            
+            circleVerticalStack.axis = .horizontal
+            
+            for i in 0 ..< counter+1
+            {
+                //  print("I value \(i) and counter \(counter)")
+                if (i == 0 || i == 1) {
+                    circleFirstHorizontalStack.removeArrangedSubview(testView[i])
+                    
+                    if i == 0 {
+                        circleVerticalStack.removeArrangedSubview(circleFirstHorizontalStack)
+                    }
+                    if i == 1 {
+                        circleFirstHorizontalStack.removeFromSuperview()
+                    }
+                }
+                
+                if (i == 2 || i == 3) {
+                    circleSecondHorizontalStack.removeArrangedSubview(testView[i])
+                    if i == 2 {
+                        circleVerticalStack.removeArrangedSubview(circleSecondHorizontalStack)
+                    }
+                    if i == 3 {
+                        circleSecondHorizontalStack.removeFromSuperview()
+                    }
+                }
+                
+//                if (i == 4 || i == 5) {
+//                    circleThirdHorizontalStack.removeArrangedSubview(testView[i])
+//                    if i == 4 {
+//                        circleVerticalStack.removeArrangedSubview(circleThirdHorizontalStack)
+//                    }
+//                    
+//                    if i == 5 {
+//                        circleThirdHorizontalStack.removeFromSuperview()
+//                    }
+//                }
+                
+                circleVerticalStack.removeArrangedSubview(testView[i])
+                testView[i].removeFromSuperview()
+            }
+            
+            for i in 0 ..< counter+1
+            {
+                circleVerticalStack.addArrangedSubview(testView[i])
+                
+            }
+            
+            
+        }
+        
+    }
+    
+    
+    
+    @IBAction func drawCircle(_ sender: AnyObject) {
+        
+        print("counter value \(counter)")
+        if (counter < 3) {
+            
+            counter += 1
+            if (counter == 2 || counter == 4) {
+                
+                diameter = diameter/1.2
+                check = true
+            }
+            
+            if check
+            {
+                for i in 0 ..< counter {
+                    circleView[i].layer.cornerRadius = diameter/2
+                    circleView[i].translatesAutoresizingMaskIntoConstraints = false
+                    circleView[i].widthAnchor.constraint(equalToConstant: diameter).isActive = true
+                    circleView[i].heightAnchor.constraint(equalToConstant: diameter).isActive = true
+                }
+                check = false
+            }
+            
+            testView.append(UIView())
+            testView[counter].frame = CGRect(x :0, y :0, width :100, height :100)
+            testView[counter].backgroundColor = UIColor.clear
+            circleView.append(UIView())
+            circleView[counter].frame = CGRect(x :0, y :0, width :diameter, height :diameter)
+            circleView[counter].layer.cornerRadius = diameter/2
+            circleView[counter].clipsToBounds = true
+            circleView[counter].layer.borderColor = UIColor.white.cgColor
+            circleView[counter].layer.borderWidth = 1.0
+            circleView[counter].backgroundColor = UIColor.black
+            testView[counter].addSubview(circleView[counter])
+            // displayView.addSubview(circleVerticalStack)
+            
+            
+            circleView[counter].translatesAutoresizingMaskIntoConstraints = false
+            circleView[counter].centerXAnchor.constraint(equalTo: testView[counter].centerXAnchor).isActive = true
+            circleView[counter].centerYAnchor.constraint(equalTo: testView[counter].centerYAnchor).isActive = true
+            circleView[counter].widthAnchor.constraint(equalToConstant: diameter).isActive = true
+            circleView[counter].heightAnchor.constraint(equalToConstant: diameter).isActive = true
+            
+            setUpCircles()
+            
+        }
+
+    }
+    
     
     
     override func didReceiveMemoryWarning() {
