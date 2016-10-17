@@ -17,5 +17,8 @@ class CellView: UITableViewCell {
     @IBOutlet weak var privacyDescription: UILabel!
     @IBOutlet weak var `switch`: UISwitch!
     @IBOutlet weak var selectionMark: UIImageView!
-    
+    @IBOutlet weak var phoneNumberField: UITextView!
+    @IBOutlet weak var countryCodeLabel: UILabel!
+    @IBOutlet weak var countryNameField: UILabel!
+    @IBOutlet weak var separatorView: UIView!
 }

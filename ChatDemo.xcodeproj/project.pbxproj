@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C804EE841DB355260029EA7A /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = C804EE831DB355260029EA7A /* warning.png */; };
 		C852A43A1DAE95F500F0F09E /* PrivacyVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852A4391DAE95F500F0F09E /* PrivacyVCBase.swift */; };
 		C852A43C1DAE960300F0F09E /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852A43B1DAE960300F0F09E /* PrivacyVC.swift */; };
 		C852A43E1DAE999B00F0F09E /* DeleteAccountVCBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852A43D1DAE999B00F0F09E /* DeleteAccountVCBase.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C804EE831DB355260029EA7A /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
 		C852A4391DAE95F500F0F09E /* PrivacyVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVCBase.swift; sourceTree = "<group>"; };
 		C852A43B1DAE960300F0F09E /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		C852A43D1DAE999B00F0F09E /* DeleteAccountVCBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountVCBase.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				C8FEC64F1D53708000525A0C /* LaunchScreen.storyboard */,
 				C8FEC6521D53708000525A0C /* Info.plist */,
 				C8FEC6741D537C0C00525A0C /* Contacts.xml */,
+				C804EE831DB355260029EA7A /* warning.png */,
 				C8D5DDE11D59F97B00582B1E /* Chat.png */,
 				C8D5DDE21D59F97B00582B1E /* Contact.png */,
 				C8D5DDE31D59F97B00582B1E /* video.png */,
@@ -349,6 +352,7 @@
 				C8D5DDDC1D59F09100582B1E /* images.png in Resources */,
 				C8D5DDE61D59F97B00582B1E /* video.png in Resources */,
 				C8FEC6751D537C0C00525A0C /* Contacts.xml in Resources */,
+				C804EE841DB355260029EA7A /* warning.png in Resources */,
 				C895D2B41DAFB6E80095CC80 /* rightMark.png in Resources */,
 				C8FEC64C1D53708000525A0C /* Main.storyboard in Resources */,
 				C8D5DDDF1D59F27000582B1E /* Call.png in Resources */,

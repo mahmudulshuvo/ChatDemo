@@ -76,7 +76,11 @@ class PrivacyDetailsVCBase: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        return CGFloat.leastNormalMagnitude
+//        if  section == 2 {
+//            return 100
+//        }
+        
+        return 75
     }
     
     
@@ -104,16 +108,33 @@ class PrivacyDetailsVCBase: UIViewController, UITableViewDataSource, UITableView
         
         if topLabelTxt == "Last Seen" {
             
-            tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+            tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 75))
             tableViewFooter.backgroundColor = UIColor.clear
-            let version = UILabel(frame: CGRect (x:10,y:-25,width:tableView.frame.width-10,height:100))
-            version.font = UIFont.systemFont(ofSize: 18)
-            version.textColor = UIColor.darkGray
-            version.textAlignment = NSTextAlignment.left
-            version.lineBreakMode = NSLineBreakMode.byWordWrapping
-            version.numberOfLines = 0
-            version.text = "If you don't share your last seen, you won't be able to see other people's last seen"
-            tableViewFooter.addSubview(version)
+            let label = UILabel(frame: CGRect (x:0,y:0,width:tableView.frame.width-10,height:75))
+            label.font = UIFont.systemFont(ofSize: 18)
+            label.textColor = UIColor.darkGray
+            label.textAlignment = NSTextAlignment.left
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 0
+            label.text = "If you don't share your last seen, you won't be able to see other people's last seen"
+            
+            let footerStackLabel = UIStackView()
+            footerStackLabel.addArrangedSubview(label)
+            
+            tableViewFooter.addSubview(footerStackLabel)
+            
+            footerStackLabel.translatesAutoresizingMaskIntoConstraints = false
+            footerStackLabel.topAnchor.constraint(equalTo: tableViewFooter.topAnchor).isActive = true
+            footerStackLabel.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor).isActive = true
+            footerStackLabel.trailingAnchor.constraint(equalTo: tableViewFooter.trailingAnchor).isActive = true
+            footerStackLabel.bottomAnchor.constraint(equalTo: tableViewFooter.bottomAnchor).isActive = true
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.topAnchor.constraint(equalTo: tableViewFooter.topAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor, constant: 20).isActive = true
+            label.trailingAnchor.constraint(equalTo: tableViewFooter.trailingAnchor, constant: -30).isActive = true
+            label.bottomAnchor.constraint(equalTo: tableViewFooter.bottomAnchor).isActive = true
+            
             return tableViewFooter
         }
         

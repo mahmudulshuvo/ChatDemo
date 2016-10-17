@@ -68,6 +68,14 @@ class PrivacyVCBase: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
+        
+        if  section == 2 {
+            return 100
+        }
+//
+//        else {
+//            return 35
+//        }
         return CGFloat.leastNormalMagnitude
     }
     
@@ -78,10 +86,19 @@ class PrivacyVCBase: UIViewController, UITableViewDataSource, UITableViewDelegat
         
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-
-        return self.section[section]
-    }
+//    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+//
+////        return self.section[section]
+//        
+////        if section == 1 {
+////            return "List of contacts you have blocked"
+////        }
+////        
+////        if section == 2 {
+////            return "If you turn off read receipts, you won't \nbe able to see read receipts from other \npeople. Read receipts are always sent \nfor group chats"
+////        }
+////        return ""
+//    }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 
@@ -90,30 +107,51 @@ class PrivacyVCBase: UIViewController, UITableViewDataSource, UITableViewDelegat
         if section == 1 {
             
             tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
-            tableViewFooter.backgroundColor = UIColor.green
-            let version = UILabel(frame: CGRect (x:10,y:-25,width:tableView.frame.width-10,height:100))
-            version.font = UIFont.systemFont(ofSize: 18)
-            version.textColor = UIColor.darkGray
-            version.textAlignment = NSTextAlignment.left
-            version.lineBreakMode = NSLineBreakMode.byWordWrapping
-            version.numberOfLines = 0
-            version.text = "List of contacts you have blocked"
-            tableViewFooter.addSubview(version)
+            tableViewFooter.backgroundColor = UIColor.clear
+            let firstLabel = UILabel(frame: CGRect (x:0,y:0,width:tableView.frame.width-10,height:100))
+            firstLabel.font = UIFont.systemFont(ofSize: 18)
+            firstLabel.textColor = UIColor.darkGray
+            firstLabel.textAlignment = NSTextAlignment.left
+            firstLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+            firstLabel.numberOfLines = 0
+            firstLabel.text = "List of contacts you have blocked"
+            tableViewFooter.addSubview(firstLabel)
+            
+            firstLabel.translatesAutoresizingMaskIntoConstraints = false
+            firstLabel.centerYAnchor.constraint(equalTo: tableViewFooter.centerYAnchor, constant: 20).isActive = true
+            firstLabel.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor, constant: 20).isActive = true
             return tableViewFooter
         }
         
         if section == 2 {
             
             tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
-            tableViewFooter.backgroundColor = UIColor.green
-            let version = UILabel(frame: CGRect (x:10,y:0,width:tableView.frame.width-10,height:100))
-            version.font = UIFont.systemFont(ofSize: 18)
-            version.textColor = UIColor.darkGray
-            version.textAlignment = NSTextAlignment.left
-            version.lineBreakMode = NSLineBreakMode.byWordWrapping
-            version.numberOfLines = 0
-            version.text = "If you turn off read receipts, you won't be able to see read receipts from other people. Read receipts are always sent for group chats"
-            tableViewFooter.addSubview(version)
+            tableViewFooter.backgroundColor = UIColor.clear
+            let secondLabel = UILabel(frame: CGRect (x:0,y:0,width:tableView.frame.width-10,height:100))
+            secondLabel.font = UIFont.systemFont(ofSize: 18)
+            secondLabel.textColor = UIColor.darkGray
+            secondLabel.textAlignment = NSTextAlignment.left
+            secondLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+            secondLabel.numberOfLines = 4
+            secondLabel.text = "If you turn off read receipts, you won't be able to see read receipts from other people. Read receipts are always sent for group chats."
+            
+            let footerStackLabel = UIStackView()
+            footerStackLabel.addArrangedSubview(secondLabel)
+            
+            tableViewFooter.addSubview(footerStackLabel)
+            
+            footerStackLabel.translatesAutoresizingMaskIntoConstraints = false
+            footerStackLabel.topAnchor.constraint(equalTo: tableViewFooter.topAnchor).isActive = true
+            footerStackLabel.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor).isActive = true
+            footerStackLabel.trailingAnchor.constraint(equalTo: tableViewFooter.trailingAnchor).isActive = true
+            footerStackLabel.bottomAnchor.constraint(equalTo: tableViewFooter.bottomAnchor).isActive = true
+            
+            secondLabel.translatesAutoresizingMaskIntoConstraints = false
+            secondLabel.topAnchor.constraint(equalTo: tableViewFooter.topAnchor).isActive = true
+            secondLabel.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor, constant: 20).isActive = true
+            secondLabel.trailingAnchor.constraint(equalTo: tableViewFooter.trailingAnchor, constant: -30).isActive = true
+            secondLabel.bottomAnchor.constraint(equalTo: tableViewFooter.bottomAnchor).isActive = true
+
             return tableViewFooter
         }
         

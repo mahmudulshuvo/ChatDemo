@@ -80,10 +80,24 @@ class ChatsVCBase: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 44.0
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 0
+        }
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 44.0;
     }
+    
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
@@ -91,20 +105,38 @@ class ChatsVCBase: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         if section == 0 {
             
-            tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+            tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
             tableViewFooter.backgroundColor = UIColor.clear
-            let version = UILabel(frame: CGRect (x:10,y:-25,width:tableView.frame.width-10,height:100))
-            version.font = UIFont.systemFont(ofSize: 18)
-            version.textColor = UIColor.darkGray
-            version.textAlignment = NSTextAlignment.left
-            version.lineBreakMode = NSLineBreakMode.byWordWrapping
-            version.numberOfLines = 0
-            version.text = "Automatically save images and video that you receive into the Camera Roll"
-            tableViewFooter.addSubview(version)
+            let label = UILabel(frame: CGRect (x:0,y:0,width:tableView.frame.width-10,height:40))
+            label.font = UIFont.systemFont(ofSize: 18)
+            label.textColor = UIColor.darkGray
+            label.textAlignment = NSTextAlignment.left
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.numberOfLines = 0
+            label.text = "Automatically save images and video that you receive into the Camera Roll"
+            
+            let footerStackLabel = UIStackView()
+            footerStackLabel.addArrangedSubview(label)
+            
+            tableViewFooter.addSubview(footerStackLabel)
+            
+            footerStackLabel.translatesAutoresizingMaskIntoConstraints = false
+            footerStackLabel.topAnchor.constraint(equalTo: tableViewFooter.topAnchor).isActive = true
+            footerStackLabel.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor).isActive = true
+            footerStackLabel.trailingAnchor.constraint(equalTo: tableViewFooter.trailingAnchor).isActive = true
+            footerStackLabel.bottomAnchor.constraint(equalTo: tableViewFooter.bottomAnchor).isActive = true
+            
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.topAnchor.constraint(equalTo: tableViewFooter.topAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: tableViewFooter.leadingAnchor, constant: 20).isActive = true
+            label.trailingAnchor.constraint(equalTo: tableViewFooter.trailingAnchor, constant: -30).isActive = true
+            label.bottomAnchor.constraint(equalTo: tableViewFooter.bottomAnchor).isActive = true
+            
             return tableViewFooter
         }
         
         return tableViewFooter
+
     }
     
     
