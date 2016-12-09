@@ -48,7 +48,7 @@ class ContactsVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  
                 print(items)
                 tableView.dataSource = self
                 tableView.delegate = self
-                //    getContacts()
+               // getContacts()
             }
         }
         else
@@ -125,19 +125,33 @@ class ContactsVCBase: UIViewController, XMLParserDelegate, UITableViewDelegate  
     
     // For fetching Contacts
     
-    //    func getContacts() {
-    //        let store = CNContactStore()
-    //
-    //        if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
-    //            store.requestAccess(for: .contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
-    //                if authorized {
-    //                    self.retrieveContactsWithStore(store)
-    //                }
-    //            })
-    //        } else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
-    //            self.retrieveContactsWithStore(store)
-    //        }
-    //    }
+//        func getContacts() {
+////            let store = CNContactStore()
+////    
+////            if CNContactStore.authorizationStatus(for: .contacts) == .notDetermined {
+////                store.requestAccess(for: .contacts, completionHandler: { (authorized: Bool, error: NSError?)
+////                    if authorized {
+////                        self.retrieveContactsWithStore(store)
+////                    }
+////                } //as! (Bool, Error?) -> Void //as! (Bool, Error?) -> Void)
+////            } else if CNContactStore.authorizationStatus(for: .contacts) == .authorized {
+////                self.retrieveContactsWithStore(store)
+////            }
+//            let store = CNContactStore()
+//            let status : CNAuthorizationStatus = CNContactStore.authorizationStatus(for: CNEntityType.contacts)
+//            if status == CNAuthorizationStatus.notDetermined{
+//                store.requestAccess(for: CNEntityType.contacts, completionHandler: { (temp: Bool,  error : NSError?) -> Void in
+//                    //call contacts fetching function
+//                    self.retrieveContactsWithStore(store)
+//                } as! (Bool, Error?) -> Void)
+//            }else if status == CNAuthorizationStatus.authorized {
+//                //call contacts fetching function
+//            }
+//        }
+//        else if status == CNAuthorizationStatus.Denied {
+//        }
+//
+//    }
     
     func retrieveContactsWithStore(_ store: CNContactStore) {
         

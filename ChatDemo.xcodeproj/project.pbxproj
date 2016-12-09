@@ -146,6 +146,130 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8400A331DFA8BDA00E915DF /* CallsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8A587E51DA257FE0071D549 /* CallsVCBase.swift */,
+				C8A587E61DA257FE0071D549 /* CallsVC.swift */,
+			);
+			name = CallsVC;
+			sourceTree = "<group>";
+		};
+		C8400A341DFA8BE800E915DF /* VideoVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8A587ED1DA2586E0071D549 /* VideoVCBase.swift */,
+				C8A587EF1DA258840071D549 /* VideoVC.swift */,
+			);
+			name = VideoVC;
+			sourceTree = "<group>";
+		};
+		C8400A351DFA8BF200E915DF /* ChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8A587F11DA2593A0071D549 /* ChatVCBase.swift */,
+				C8A587F31DA259480071D549 /* ChatVC.swift */,
+			);
+			name = ChatVC;
+			sourceTree = "<group>";
+		};
+		C8400A361DFA8C0000E915DF /* ContactsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8A587F51DA259980071D549 /* ContactsVCBase.swift */,
+				C8A587F71DA259AA0071D549 /* ContactsVC.swift */,
+			);
+			name = ContactsVC;
+			sourceTree = "<group>";
+		};
+		C8400A371DFA8C0C00E915DF /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8A587E71DA257FE0071D549 /* SettingsVCBase.swift */,
+				C8A587E81DA257FE0071D549 /* SettingsVC.swift */,
+			);
+			name = SettingsVC;
+			sourceTree = "<group>";
+		};
+		C8400A381DFA8C3300E915DF /* AccountsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8E6AF041DAD6ACE0027E0F8 /* AccountsVCBase.swift */,
+				C8E6AF061DAD6AE50027E0F8 /* AccountsVC.swift */,
+			);
+			name = AccountsVC;
+			sourceTree = "<group>";
+		};
+		C8400A391DFA8C3E00E915DF /* PrivacyVC */ = {
+			isa = PBXGroup;
+			children = (
+				C852A4391DAE95F500F0F09E /* PrivacyVCBase.swift */,
+				C852A43B1DAE960300F0F09E /* PrivacyVC.swift */,
+			);
+			name = PrivacyVC;
+			sourceTree = "<group>";
+		};
+		C8400A3A1DFA8C4A00E915DF /* PrivacyDetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C895D2AF1DAFA1370095CC80 /* PrivacyDetailsVCBase.swift */,
+				C895D2B11DAFA14C0095CC80 /* PrivacyDetailsVC.swift */,
+			);
+			name = PrivacyDetailsVC;
+			sourceTree = "<group>";
+		};
+		C8400A3B1DFA8C5900E915DF /* BlockVC */ = {
+			isa = PBXGroup;
+			children = (
+				C895D2B51DAFC1770095CC80 /* BlockVCBase.swift */,
+				C895D2B71DAFC1850095CC80 /* BlockVC.swift */,
+			);
+			name = BlockVC;
+			sourceTree = "<group>";
+		};
+		C8400A3C1DFA8C6300E915DF /* DeleteAccountVC */ = {
+			isa = PBXGroup;
+			children = (
+				C852A43D1DAE999B00F0F09E /* DeleteAccountVCBase.swift */,
+				C852A43F1DAE99C100F0F09E /* DeleteAccountVC.swift */,
+			);
+			name = DeleteAccountVC;
+			sourceTree = "<group>";
+		};
+		C8400A3E1DFA8C7E00E915DF /* ChatsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8E08D861DAE0A3800CAEF01 /* ChatsVCBase.swift */,
+				C8E08D881DAE0A4900CAEF01 /* ChatsVC.swift */,
+			);
+			name = ChatsVC;
+			sourceTree = "<group>";
+		};
+		C8400A3F1DFA8C8B00E915DF /* NotificationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				C8C2934B1DAE2FE000818F55 /* NotificationsVCBase.swift */,
+				C8C2934D1DAE300200818F55 /* NotificationsVC.swift */,
+			);
+			name = NotificationsVC;
+			sourceTree = "<group>";
+		};
+		C8400A401DFA8CB300E915DF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C804EE831DB355260029EA7A /* warning.png */,
+				C8D5DDE11D59F97B00582B1E /* Chat.png */,
+				C8D5DDE21D59F97B00582B1E /* Contact.png */,
+				C8D5DDE31D59F97B00582B1E /* video.png */,
+				C8D5DDDD1D59F27000582B1E /* Call.png */,
+				C8D5DDE71D59F9AD00582B1E /* Setting.png */,
+				C8D5DDDB1D59F09100582B1E /* images.png */,
+				C8D130621D59EC7900FC9685 /* Settings.png */,
+				C895D2B31DAFB6E80095CC80 /* rightMark.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		C8FEC63A1D53707F00525A0C = {
 			isa = PBXGroup;
 			children = (
@@ -171,46 +295,26 @@
 			children = (
 				C8FEC6461D53708000525A0C /* AppDelegate.swift */,
 				C8FEC6481D53708000525A0C /* ViewController.swift */,
-				C8A587E51DA257FE0071D549 /* CallsVCBase.swift */,
-				C8A587E61DA257FE0071D549 /* CallsVC.swift */,
-				C8A587ED1DA2586E0071D549 /* VideoVCBase.swift */,
-				C8A587EF1DA258840071D549 /* VideoVC.swift */,
-				C8A587F11DA2593A0071D549 /* ChatVCBase.swift */,
-				C8A587F31DA259480071D549 /* ChatVC.swift */,
-				C8A587F51DA259980071D549 /* ContactsVCBase.swift */,
-				C8A587F71DA259AA0071D549 /* ContactsVC.swift */,
-				C8A587E71DA257FE0071D549 /* SettingsVCBase.swift */,
-				C8A587E81DA257FE0071D549 /* SettingsVC.swift */,
-				C8E6AF041DAD6ACE0027E0F8 /* AccountsVCBase.swift */,
-				C8E6AF061DAD6AE50027E0F8 /* AccountsVC.swift */,
-				C852A4391DAE95F500F0F09E /* PrivacyVCBase.swift */,
-				C852A43B1DAE960300F0F09E /* PrivacyVC.swift */,
-				C895D2AF1DAFA1370095CC80 /* PrivacyDetailsVCBase.swift */,
-				C895D2B11DAFA14C0095CC80 /* PrivacyDetailsVC.swift */,
-				C895D2B51DAFC1770095CC80 /* BlockVCBase.swift */,
-				C895D2B71DAFC1850095CC80 /* BlockVC.swift */,
-				C852A43D1DAE999B00F0F09E /* DeleteAccountVCBase.swift */,
-				C852A43F1DAE99C100F0F09E /* DeleteAccountVC.swift */,
-				C8E08D861DAE0A3800CAEF01 /* ChatsVCBase.swift */,
-				C8E08D881DAE0A4900CAEF01 /* ChatsVC.swift */,
-				C8C2934B1DAE2FE000818F55 /* NotificationsVCBase.swift */,
-				C8C2934D1DAE300200818F55 /* NotificationsVC.swift */,
 				C8FB63A21D59050C009E3AFD /* CellView.swift */,
 				C895D2B91DAFD40A0095CC80 /* OthersView.swift */,
+				C8400A331DFA8BDA00E915DF /* CallsVC */,
+				C8400A341DFA8BE800E915DF /* VideoVC */,
+				C8400A351DFA8BF200E915DF /* ChatVC */,
+				C8400A361DFA8C0000E915DF /* ContactsVC */,
+				C8400A371DFA8C0C00E915DF /* SettingsVC */,
+				C8400A381DFA8C3300E915DF /* AccountsVC */,
+				C8400A391DFA8C3E00E915DF /* PrivacyVC */,
+				C8400A3A1DFA8C4A00E915DF /* PrivacyDetailsVC */,
+				C8400A3B1DFA8C5900E915DF /* BlockVC */,
+				C8400A3C1DFA8C6300E915DF /* DeleteAccountVC */,
+				C8400A3E1DFA8C7E00E915DF /* ChatsVC */,
+				C8400A3F1DFA8C8B00E915DF /* NotificationsVC */,
 				C8FEC64A1D53708000525A0C /* Main.storyboard */,
 				C8FEC64D1D53708000525A0C /* Assets.xcassets */,
 				C8FEC64F1D53708000525A0C /* LaunchScreen.storyboard */,
 				C8FEC6521D53708000525A0C /* Info.plist */,
 				C8FEC6741D537C0C00525A0C /* Contacts.xml */,
-				C804EE831DB355260029EA7A /* warning.png */,
-				C8D5DDE11D59F97B00582B1E /* Chat.png */,
-				C8D5DDE21D59F97B00582B1E /* Contact.png */,
-				C8D5DDE31D59F97B00582B1E /* video.png */,
-				C8D5DDDD1D59F27000582B1E /* Call.png */,
-				C8D5DDE71D59F9AD00582B1E /* Setting.png */,
-				C8D5DDDB1D59F09100582B1E /* images.png */,
-				C8D130621D59EC7900FC9685 /* Settings.png */,
-				C895D2B31DAFB6E80095CC80 /* rightMark.png */,
+				C8400A401DFA8CB300E915DF /* Images */,
 			);
 			path = ChatDemo;
 			sourceTree = "<group>";
@@ -557,6 +661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChatDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shuvo.ChatDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -569,6 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChatDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shuvo.ChatDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
